@@ -11,7 +11,7 @@ def metodo_potencias(matriz = [], erro = 1e-5, interacao_maxima = 1000):
     (n, m) = matriz.shape
     vetor = obter_vetor_inicial(n)
     for i in range(interacao_maxima):
-        print("%i %s" % (i, vetor))
+        # print("%i %s" % (i, vetor))
         vetor_seguinte = np.matmul(matriz, vetor)
         vetor_seguinte = vetor_seguinte/LA.norm(vetor_seguinte, 1)
         vetor_dif = np.subtract(vetor_seguinte, vetor)

@@ -55,9 +55,20 @@ def criar_matriz(paginas, alpha = 0.25):
     matriz_amortecimento = np.full((quantidades, quantidades), alpha/quantidades)
     return np.add(matriz, matriz_amortecimento)
 
+def criar_elemento_vetor_resultado(nome_pagina, lista_nome_arquivo, paginas, vetor_pesos):
+    idx = lista_nome_arquivo.index(nome_pagina)
+    return {
+        "peso": vetor_pesos[idx],
+        "pagina": nome_pagina # paginas[idx]
+    }
 
-
-
+def ordenar_resultado(paginas, vetor_pesos):
+    lista_nome_arquivo = list(paginas.keys())
+    vetor_paginas = list(map(lambda p: criar_elemento_vetor_resultado(p, lista_nome_arquivo, paginas, vetor_pesos), lista_nome_arquivo))
+    vetor_paginas.sort(key= lambda p: p["peso"], reverse=True)
+    # print(vetor_paginas)
+    return vetor_paginas
+    
 
 def listar_pagina_service(texto_busca):
     if texto_busca in dicionario:
@@ -66,8 +77,9 @@ def listar_pagina_service(texto_busca):
         remover_links_quebrado(paginas)
         # print(paginas)
         matriz = criar_matriz(paginas)
-        print(matriz)
-        metodo_potencias(matriz)
+        # print(matriz)
+        vetor_pesos = metodo_potencias(matriz)
+        return ordenar_resultado(paginas, vetor_pesos)
     return []
 
-listar_pagina_service("marte")
+# listar_pagina_service("pitagoras")
