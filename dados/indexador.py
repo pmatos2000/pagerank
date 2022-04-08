@@ -60,7 +60,7 @@ def indexar_pagina(quantidade_pagina = 10000):
             
         except:
             print("Erro pagina: %s" % (titulo_pagina))
-            paginas_error = paginas_error + [paginas_error]
+            paginas_error = paginas_error + [titulo_pagina]
 
 
 def formatar_palavra(palavra):
