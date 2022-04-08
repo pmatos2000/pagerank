@@ -59,7 +59,7 @@ def criar_elemento_vetor_resultado(nome_pagina, lista_nome_arquivo, paginas, vet
     idx = lista_nome_arquivo.index(nome_pagina)
     return {
         "peso": vetor_pesos[idx],
-        "pagina": nome_pagina # paginas[idx]
+        "pagina": nome_pagina# paginas[nome_pagina]
     }
 
 def ordenar_resultado(paginas, vetor_pesos):
